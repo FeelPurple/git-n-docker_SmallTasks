@@ -4,7 +4,7 @@
 
 <hr>
 
-<ins>*Comments:*</ins>
+<ins>Comments:</ins>
 
 - run Nginx in container:
 
