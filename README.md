@@ -16,17 +16,17 @@
 
 - set up replication on master:
 
-`CREATE USER 'replication'@'%' IDENTIFIED BY 'SlaveReplPass2000'`;
+`CREATE USER 'replication'@'%' IDENTIFIED BY 'SlaveReplPass2000';`
 
-`GRANT REPLICATION SLAVE ON \*.\* TO 'replication'@'%'`;
+`GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';`
 
-Find *File* and *Position* in the output of below statement:
+Find *File* and *Position* properties in the output of below statement:
 
-`SHOW MASTER STATUS\G`; 
+`SHOW MASTER STATUS\G;` 
 
 Initialize an empty database: 
 
-`CREATE DATABASE `\`vedita-database`\`; 
+`CREATE DATABASE ``vedita-database``;` 
 
 - enter mariadb slave node environment:
 
@@ -35,10 +35,10 @@ Initialize an empty database:
 - complete replication setup:
 
 `CHANGE MASTER TO<br/>
-MASTER_HOST='db-master-node',<br/>
-MASTER_USER='replication',<br/>
-MASTER_PASSWORD='SlaveReplPass2000',<br/>
-MASTER_LOG_FILE='<log file name on master node, e.g. `*mysqld-bin.000001`*`>',<br/>
+MASTER_HOST='db-master-node',`<br/>`
+MASTER_USER='replication',`<br/>`
+MASTER_PASSWORD='SlaveReplPass2000',`<br/>`
+MASTER_LOG_FILE='<log file name on master node, e.g. `*mysqld-bin.000001`*>',`<br/>`
 MASTER_LOG_POS='<position in log file on master node, e.g. `*329`*>';`
 
 `START SLAVE;` 
