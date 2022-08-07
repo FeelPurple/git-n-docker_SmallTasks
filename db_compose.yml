@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  db-master-node:
+    image: mariadb:latest
+    container_name: db-master-node
+    restart: unless-stopped
+    env_file: ./db-master-node/.env.master
+    volumes:
+      - ./db-master-node/data:/var/lib/mysql
+      - ./db-master-node/my.cnf:/etc/my.cnf
+    environment:
+      - MYSQL_USER:${MYSQL_USER} 
+      - MYSQL_PASSWORD:${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD:${MYSQL_PASSWORD}    
+    networks:
+      default:
+        aliases:
+          - mariadb    
+  db-slave-node:
+    image: mariadb:latest
+    container_name: db-slave-node
+    restart: unless-stopped
+    env_file: ./db-slave-node/.env.slave
+    volumes:
+      - ./db-slave-node/data:/var/lib/mysql
+      - ./db-slave-node/my.cnf:/etc/my.cnf
+    environment:
+      - MYSQL_USER:${MYSQL_USER} 
+      - MYSQL_PASSWORD:${MYSQL_PASSWORD}
+      - MYSQL_ROOT_PASSWORD:${MYSQL_PASSWORD}    
+    networks:
+      default:
+        aliases:
+          - mariadb   
