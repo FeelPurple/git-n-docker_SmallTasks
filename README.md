@@ -18,7 +18,7 @@
 
 <code>MariaDB [(none)]> CREATE USER 'replication'@'%' IDENTIFIED BY 'SlaveReplPass2000';</code>
 
-<code>MariaDB [(none)]> GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';</code>
+`MariaDB [(none)]> GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';`
 
 Find *File* and *Position* properties in the output of below statement:
 
@@ -34,11 +34,11 @@ Initialize an empty database:
 
 - complete replication setup:
 
-<code>MariaDB [(none)]> CHANGE MASTER TO<br/>
-MASTER_HOST='db-master-node',<br/>
-MASTER_USER='replication',<br/>
-MASTER_PASSWORD='SlaveReplPass2000',<br/>
-MASTER_LOG_FILE='<log file name on master node, e.g. <em>mysqld-bin.000001</em>',<br/>
-MASTER_LOG_POS='<position in log file on master node, e.g. <em>329</em>,';<code>
+`MariaDB [(none)]> CHANGE MASTER TO`<br/>`
+MASTER_HOST='db-master-node',`<br/>`
+MASTER_USER='replication',`<br/>`
+MASTER_PASSWORD='SlaveReplPass2000',`<br/>`
+MASTER_LOG_FILE='<log file name on master node, e.g. `<em>`mysqld-bin.000001`</em>`',`<br/>`
+MASTER_LOG_POS='<position in log file on master node, e.g. `<em>`329`</em>`,'
 
-<code>MariaDB [(none)]> START SLAVE;</code>
+`MariaDB [(none)]> START SLAVE;`
