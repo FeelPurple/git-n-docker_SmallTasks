@@ -16,21 +16,21 @@
 
 - set up replication on master:
 
-`MariaDB [(none)]> CREATE USER 'replication'@'%' IDENTIFIED BY 'SlaveReplPass2000';`
+<code>MariaDB [(none)]> CREATE USER 'replication'@'%' IDENTIFIED BY 'SlaveReplPass2000';</code>
 
-`MariaDB [(none)]> GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';`
+<code>MariaDB [(none)]> GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';</code>
 
 Find *File* and *Position* properties in the output of below statement:
 
-`MariaDB [(none)]> SHOW MASTER STATUS\G;` 
+<code>MariaDB [(none)]> SHOW MASTER STATUS\G;</code> 
 
-Initialize an empty database: 
+Initialize an empty database:
 
-`MariaDB [(none)]> CREATE DATABASE vedita-database;` 
+<code>MariaDB [(none)]> CREATE DATABASE `vedita-database`;</code> 
 
 - enter mariadb slave node environment:
 
-`docker compose -f db_compose.yml exec db-slave-node bash`
+<code>docker compose -f db_compose.yml exec db-slave-node bash</code>
 
 - complete replication setup:
 
@@ -41,4 +41,4 @@ MASTER_PASSWORD='SlaveReplPass2000',<br/>
 MASTER_LOG_FILE='<log file name on master node, e.g. <em>mysqld-bin.000001</em>',<br/>
 MASTER_LOG_POS='<position in log file on master node, e.g. <em>329</em>,';<code>
 
-`MariaDB [(none)]> START SLAVE;`
+<code>MariaDB [(none)]> START SLAVE;</code>
