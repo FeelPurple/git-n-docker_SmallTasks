@@ -26,7 +26,7 @@ Find *File* and *Position* properties in the output of below statement:
 
 Initialize an empty database: 
 
-`MariaDB [(none)]> CREATE DATABASE ```vedita-database\```;` 
+`MariaDB [(none)]> CREATE DATABASE `` `vedita-database` ``;` 
 
 - enter mariadb slave node environment:
 
@@ -34,11 +34,11 @@ Initialize an empty database:
 
 - complete replication setup:
 
-`MariaDB [(none)]> CHANGE MASTER TO `<br/>`
-MASTER_HOST='db-master-node',`<br/>`
-MASTER_USER='replication',`<br/>`
-MASTER_PASSWORD='SlaveReplPass2000',`<br/>`
-MASTER_LOG_FILE='<log file name on master node, e.g. `<em>mysqld-bin.000001</em>`',`<br/>`
-MASTER_LOG_POS='<position in log file on master node, e.g. *`329`*>';`
+<code>MariaDB [(none)]> CHANGE MASTER TO <br/>
+MASTER_HOST='db-master-node',<br/>
+MASTER_USER='replication',<br/>
+MASTER_PASSWORD='SlaveReplPass2000',<br/>
+MASTER_LOG_FILE='<log file name on master node, e.g. <em>mysqld-bin.000001</em>',<br/>
+MASTER_LOG_POS='<position in log file on master node, e.g. <em>329</em>,';<code>
 
 `MariaDB [(none)]> START SLAVE;`
