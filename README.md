@@ -1,51 +1,17 @@
+1. Конфигурирование Nginx
+
+Разверните docker-контейнер Nginx. Напишите конфигурационный файл для реверс прокси для задания 2.
+
+2. Конфигурирование php-fpm
+
+Разверните docker-контейнер php-fpm 7.4 и отправьте на него трафик с Nginx. Используйте приложенный php-файл как пример открываемой страницы.
+
+[app1.php](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/9ab24d10-5c57-4fff-9797-95d7d4935664/app1.php)
+
+3. Конфигурирование MariaDB
+
+Разверните два контейнера MariaDB. Инициализируйте базу данных vedita-database. Настройте репликацию master-slave.
+
 4. Экспорт контейнеров
 
 Экспортируйте полученные контейнеры в tar.gz и прикрепите ссылку на их скачивание.
-
-<hr>
-
-<ins>Comments</ins>:
-
-|   |    |
-|---|--- |
-|Nginx |[link](https://github.com/FeelPurple/git-n-docker_SmallTasks/raw/task4/webserver.tar.gz)|
-|php-fpm|[link](https://github.com/FeelPurple/git-n-docker_SmallTasks/raw/task4/php-fpm.tar.gz)|
-|MariaDB master node|[link](https://github.com/FeelPurple/git-n-docker_SmallTasks/raw/task4/db-master-node.tar.gz)|
-|MariaDB slave node|[link](https://github.com/FeelPurple/git-n-docker_SmallTasks/raw/task4/db-slave-node.tar.gz)|
-=======
-- start both nodes by running:
-
-<code>docker compose -f db_compose.yml up -d</code>
-
-- enter mariadb master node environment:
-
-<code>docker compose -f db_compose.yml exec db-master-node bash</code>
-
-- set up replication on master:
-
-<code>MariaDB [(none)]> CREATE USER 'replication'@'%' IDENTIFIED BY 'SlaveReplPass2000';</code>
-
-`MariaDB [(none)]> GRANT REPLICATION SLAVE ON *.* TO 'replication'@'%';`
-
-Find *File* and *Position* properties in the output of below statement:
-
-<code>MariaDB [(none)]> SHOW MASTER STATUS\G;</code> 
-
-Initialize an empty database:
-
-<code>MariaDB [(none)]> CREATE DATABASE`` `vedita-database`;``</code> 
-
-- enter mariadb slave node environment:
-
-<code>docker compose -f db_compose.yml exec db-slave-node bash</code>
-
-- complete replication setup:
-
-`MariaDB [(none)]> CHANGE MASTER TO `<br/>`
-MASTER_HOST='db-master-node', `<br/>`
-MASTER_USER='replication', `<br/>`
-MASTER_PASSWORD='SlaveReplPass2000', `<br/>`
-MASTER_LOG_FILE='< log file name on master node, e.g.`<em>`mysqld-bin.000001`</em>`>', `<br/>`
-MASTER_LOG_POS='< position in log file on master node, e.g.`<em>`329`</em>`>';`
-
-`MariaDB [(none)]> START SLAVE;`
