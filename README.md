@@ -26,7 +26,7 @@ Find *File* and *Position* properties in the output of below statement:
 
 Initialize an empty database:
 
-<code>MariaDB [(none)]> CREATE DATABASE`` `vedita-database`; ``</code> 
+<code>MariaDB [(none)]> CREATE DATABASE`` `vedita-database`;``</code> 
 
 - enter mariadb slave node environment:
 
