@@ -8,11 +8,11 @@
 
 - start both nodes by running:
 
-`docker compose -f db_compose.yml up -d`
+<code>docker compose -f db_compose.yml up -d</code>
 
 - enter mariadb master node environment:
 
-`docker compose -f db_compose.yml exec db-master-node bash`
+<code>docker compose -f db_compose.yml exec db-master-node bash</code>
 
 - set up replication on master:
 
@@ -26,7 +26,7 @@ Find *File* and *Position* properties in the output of below statement:
 
 Initialize an empty database: 
 
-`MariaDB [(none)]> CREATE DATABASE `` `vedita-database` ``;` 
+`MariaDB [(none)]> CREATE DATABASE vedita-database;` 
 
 - enter mariadb slave node environment:
 
