@@ -36,7 +36,7 @@ Initialize an empty database:
 
 `MariaDB [(none)]> CHANGE MASTER TO `<br/>`
 MASTER_HOST='db-master-node', `<br/>`
-MASTER_USER='replication', `<br/>`
+MASTER_USE='replication', `<br/>`
 MASTER_PASSWORD='SlaveReplPass2000', `<br/>`
 MASTER_LOG_FILE='< log file name on master node, e.g.`<em>`mysqld-bin.000001`</em>`>', `<br/>`
 MASTER_LOG_POS='< position in log file on master node, e.g.`<em>`329`</em>`>';`
