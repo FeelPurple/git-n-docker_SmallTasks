@@ -11,4 +11,4 @@
 |Nginx |[link](https://github.com/FeelPurple/git-n-docker_SmallTasks/raw/task4/webserver.tar.gz)|
 |php-fpm|[link](https://github.com/FeelPurple/git-n-docker_SmallTasks/raw/task4/php-fpm.tar.gz)|
 |MariaDB master node|[link](https://github.com/FeelPurple/git-n-docker_SmallTasks/raw/task4/db-master-node.tar.gz)|
-|MariaDB slave node|[link](https://github.com/FeelPurple/git-n-docker_SmallTasks/raw/task4/db-slave-node.tar.gz)|
+|MariaDB slave node|[link](https://github.com/FeelPurple/git-n-docker_SmallTasks/raw/task4/db-slave-node.tar.gz)
